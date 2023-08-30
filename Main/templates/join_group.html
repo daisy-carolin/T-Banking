@@ -1,0 +1,139 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="icon" href="{% static 'favicon/favicon.png' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'favicon/favicon.png' %}" type="image/x-icon">
+    <title>Table Banking</title>
+</head>
+<style>
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    text-align: center;
+    margin: 100px auto; 
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+h1 {
+    color: #333;
+    margin-top: 80px; /* Adjust the top margin to reduce the distance */
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #33911a;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+#create-group {
+    margin-right: 10px; 
+}
+
+#join-group {
+    margin-left: 10px; 
+}
+
+#logout-button {
+    background-color: #d9534f;
+    margin-top: 50px;
+    color: black;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 20px 20px 30px;
+    background-color: #33911a;
+    color: #ffffff;
+    width: 100%;
+}
+
+.nav-links {
+    display: flex;
+    gap: 10px;
+}
+
+#nav-links {
+    float: right;
+    margin-left: 60rem;
+}
+
+.nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+}  
+
+</style>
+<div class="nav-container">
+    <div class="nav-links" id="nav-links">
+        <a href="{% url 'home' %}" class="nav-link">Home</a>
+        <a href="{% url 'login' %}" class="nav-link">Login</a>
+        <a href="{% url 'register' %}" class="nav-link">Register</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}" class="nav-link">Logout</a>
+        {% endif %}
+    </div>
+</div>
+<body>
+
+<div class="text-center container">
+        <h1 id="title text-center">Automate your SACCO
+        </h1>
+        <p>Empowering women through financial inclusion.</p>
+        <p>Choose an option to continue</p>
+        <a href="{% url 'group_set_up' %}" class="btn btn-primary" id="create-group-button">Create a Group</a>
+        <button id="join-group"><a href="{% url 'proceed' %}" style="color: white; text-decoration: none;">Join a Group</a></button>
+
+        <hr>
+        <h2 style="color: df;">Join any of these Group below</h2>
+        <hr>
+
+        <ul style="list-style: none">
+            {% for group in groups %}
+                <li>
+                    <strong>{{ group.group_name }}</strong>
+                    {% comment %} <p>{{ group.group_type }}</p>  {% endcomment %}
+                <a href="{% url 'view_groups' group.id %}">Join Group</a>
+                </li> 
+            {% endfor %} 
+        </ul>
+     
+ {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}" class="btn btn-danger" id="logout-button">Logout</a>
+        {% endif %}        
+
+    {% if group_joined %}
+        <p>You have successfully joined the group "{{ group.group_name }}"!</p>
+        <!-- You can add more information about the group if needed -->
+    {% else %}
+        <em><marquee>You haven't joined any group yet . Please Choose any of these groups above or create a new one.</marquee></em>
+        <!-- You can provide more details about the error if needed -->
+    {% endif %}
+
+    <a href="{% url 'home' %}">Go back to homepage</a>
+
+        <p>&copy; 2023 Bharathbrands. All rights reserved.</p>
+    </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

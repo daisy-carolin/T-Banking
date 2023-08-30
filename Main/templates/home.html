@@ -1,0 +1,327 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="{% static 'favicon/favicon.png' %}" type="image/x-icon">
+  <link rel="shortcut icon" href="{% static 'favicon/favicon.png' %}" type="image/x-icon">
+    <style>
+        /* Reset default margins and padding */
+body, h1, h2, h3, h4, p {
+  margin: 0;
+  padding: 0;
+}
+
+/* Global styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: whitesmoke;
+  color: #333;
+}
+
+/* Header styling */
+.header {
+  background-color: #33911a;
+  padding: 20px 20px;
+  text-align: center;
+  color: white;
+  height: 30px;
+}
+
+.header-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  float: right;
+}
+
+.cta-container {
+  display: flex;
+  align-items: center;
+}
+
+.login-button, .signup-button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: white;
+}
+
+.login-button {
+  background-color: #267a0f;
+  margin-right: 10px; /* Add margin between buttons */
+}
+
+.signup-button {
+  background-color: #ff9900;
+}
+
+.get-started-button {
+  background-color: #33911a;
+  border: none;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  margin-top: 20px; /* Adjust margin as needed */
+  display: inline-block;
+}
+
+.get-started-button:hover {
+  background-color: #267a0f; /* Change color on hover */
+}
+
+/* Main content styling */
+.main-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.caption {
+  flex: 1;
+}
+
+.caption h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
+.caption p {
+  font-size: 18px;
+}
+
+.avatar img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+home
+.features-section {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px;
+  background-color: white;
+}
+
+.feature-card {
+  flex: 1;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  margin-right: 20px; /* Add spacing between cards */
+}
+
+/* Apply margin only to the right side of the last card to prevent excess spacing */
+.feature-card:last-child {
+  margin-right: 0;
+}
+
+.feature-card h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.feature-card p {
+  font-size: 18px;
+}
+
+.read-more-button {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #33911a;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+h1{
+    color: #33911a;
+}
+
+h3{
+    color: #33911a;  
+}
+
+/* Footer styling */
+.footer {
+  background-color: #333;
+  color: white;
+  padding: 20px 0;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-logo img {
+  max-width: 100px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+}
+
+.footer-links li {
+  margin-right: 20px;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-social .social-icon {
+  color: white;
+  font-size: 20px;
+  margin-right: 15px;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 10px;
+}
+    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Table Banking Project</title>
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <div class="cta-container">
+        <div class="login-cta">
+          <a class="login-button" href="{% url 'login' %}">Login</a>
+        </div>
+        <div class="signup-cta">
+          <a class="signup-button" href="{% url 'register' %}">Register</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="main-content">
+    <div class="caption">
+      <h1>Welcome to Table Banking</h1>
+      <div class="table-banking-section">
+        <h2>How Table Banking works</h2>
+        <p>
+          Empowering women through financial inclusion.
+          <br>
+          <br>
+          What is Table Banking?
+          <br>
+          <br>
+          Table Banking is a group-based funding system where members of a group
+          <br>
+          
+            meet weekly and make weekly savings to form a kitty from which members can borrow.
+          <br>
+          
+          Each member’s contributions are recorded in her passbook and referred to as her share.
+          <br>
+         
+          The minimum contribution per week, which can be as low as Ksh 25 (20p), is set in the
+          <br>
+          
+        group’s constitution, which is written by the group itself.
+        Thus it is set with the members’ 
+        <br>
+          <br>
+        incomes in mind.Members can contribute any amount they choose at or above the minimum set.
+
+          <br>
+         
+          Members can contribute any amount they choose at or above the minimum set.The constitution 
+          <br>
+          also covers matters such as election of officers, arrangements for audit of the ledgers, term of loans 
+          <br>
+          and interest rates, 
+          and group sharing of interest paid.the ledgers, term of loans and interest rates,
+          <br>
+           and group sharing 
+           of interest paid.
+        the ledgers, term of loans and interest rates, and group sharing 
+<br>
+of interest paid.the ledgers, term of loans and interest rates, and group sharing of interest paid.
+          <br>
+          
+          The constitution also covers matters such as election of officers, arrangements for audit of the
+          <br> 
+          ledgers, term of loans and interest rates, and group sharing of interest paid.
+        </p>
+      </div>
+      
+      <a class="get-started-button" href="{% url 'register' %}">Get Started</a>
+ </div>
+ <div class="avatar">
+    <img src="https://app.websacco.com/templates/admin_themes/groups/img/auth/group_en.png" alt="Avatar">
+  </div>
+  </section>
+  <!-- <section class="features-section">
+    <div class="feature-card">
+      <h3>Easy Setup</h3>
+      <p>Only five steps are required to set up the platform and start using!</p>
+      <a class="read-more-button" href="https://websacco.com/home/easy-to-setup/">Read More</a>
+    </div>
+    <div class="feature-card">
+      <h3>Safe & Secure</h3>
+      <p>Our platform is in a secure environment and all your data is safe.</p>
+      <a class="read-more-button" href="https://websacco.com/home/websacco-is-safe-and-secure/">Read More</a>
+    </div>
+    <div class="feature-card">
+      <h3>Dedicated Support</h3>
+      <p>All-time available support team ready to help you with any question.</p>
+      <a class="read-more-button" href="https://websacco.com/home/websacco-dedicated-support/">Read More</a>
+    </div>
+  </section> -->
+  
+</body>
+</html>
+
+<footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="your-logo.png" alt="Your Logo">
+        <p>Empowering women through financial inclusion.
+        </p>
+      </div>
+      <div class="footer-links">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2023 Your Company. All rights reserved.</p>
+    </div>
+  </footer>
+  

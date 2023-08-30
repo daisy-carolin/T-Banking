@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block content %}
+    
+<table border="3">
+    <thead>
+    <tr>
+        <th>First Name </th>
+        <th>Last  Name</th>
+        <th>Amount</th>
+        <th>Date</th>
+        
+        <th>Action</th>
+        
+    </tr>
+    </thead>
+<tbody>
+{% for data in records %}
+<tr>
+        <td>{{ data.first_name}} </td>
+        <td>{{ data.last_name}} </td>
+        <td>{{ data.amount}} </td>
+        <td>{{ data.date}} </td>
+        
+        <td>
+            <a href="{ % url 'delete_activities' data.id%} " style="color: black;"><i class="fa fa-times"></i></a>
+            <a href="#" style="color: black;" data-toggle="modal" data-target="#activitiesModal{{ data.id }}"><i class="fa fa-eye"></i></a>
+            <a href="{% url 'activities_update' data.id%}" style="color: black;"><i class='fa fa-edit'></i></a>
+
+        </td>
+        
+       
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+   
+{% endblock content %}

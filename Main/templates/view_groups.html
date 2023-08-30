@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="icon" href="{% static 'favicon/favicon.png' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'favicon/favicon.png' %}" type="image/x-icon">
+    <title>Table Banking</title>
+    <style>
+        /* Add your custom styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            text-align: center;
+            margin: 100px auto; 
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        h1 {
+            color: #333;
+            margin-top: 80px;
+            color: #33911a;
+            font-style: italic;
+        }
+        h4 {
+            color: #333;
+            margin-top: 20px;
+            color: #33911a;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #33911a;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+            border-radius: 5px;
+        }
+
+        #button-group {
+            display: flex;
+            justify-content: center; /* Center the buttons horizontally */
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        #proceed {
+            background-color: #33911a;
+            color: white;
+            border: none;
+            padding: 8px 10px; /* Adjusted padding */
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            margin: 0 10px; /* Adjusted margin */
+        }
+
+        #proceed a {
+            color: white;
+            text-decoration: none;
+        }
+
+        #proceed:hover {
+            background-color: #2a7e14;
+        }
+
+        .btn-secondary {
+            margin: 0 10px; /* Adjusted margin for Back button */
+        }
+
+        /* Add more custom styles as needed */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the "{{ group_name }}" group!</h1>
+        <p>"You have successfully joined this group"</p>
+
+        <p>Joining this group allows you to contribute, manage your finances, and more.</p>
+        <h4>Group Members</h4>
+        {% for data in records %}
+        <div class="person-info">
+            <a href="{% url 'view_member' %}?id={{ data.id }}">
+                <img src="https://icon-sets.iconify.design/ep/avatar/{{ data.id }}.svg" alt="Avatar" class="person-avatar">
+            </a>
+            <span class="person-name">{{ data.first_name }} {{ data.last_name }}</span>
+        </div>
+    {% endfor %}
+    
+    
+    
+        <div id="button-group">
+            {% csrf_token %}
+
+            <form action="{% url 'proceed' %}" method="POST">
+                <a href="{% url 'join_group' %}" class="btn btn-secondary">Back</a>
+                <button id="proceed"><a href="{% url 'proceed' %}" style="color: white; text-decoration: none;">Proceed</a></button>
+            </form><br><br><br><br>
+         
+        </div>
+    </div>
+
+    <footer class="text-center py-4">
+        <a href="{% url 'home' %}">Go back to homepage</a>
+        <p>&copy; 2023 Bharathbrands. All rights reserved.</p>
+    </footer>
+</body>
+</html>

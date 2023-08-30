@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loan Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            background-color: #33911a;
+            color: #ffffff;
+            width: 100%;
+            margin-bottom: 300px;
+            height: 50px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            margin-left: auto;
+        }
+
+        .nav-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 400px;
+            text-align: center;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: -300px; /* Move the container up */
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .button {
+            background-color: #33911a;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .button:hover {
+            background-color: #2a7e14;
+        }
+        .footer {
+  background-color: #333;
+  color: white;
+  padding: 20px 0;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-logo img {
+  max-width: 100px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+}
+
+.footer-links li {
+  margin-right: 20px;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-social .social-icon {
+  color: white;
+  font-size: 20px;
+  margin-right: 15px;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 10px;
+}
+.content {
+display: flex;
+align-items: flex-start;
+justify-content: flex-start;
+margin-left:0px; /* Adjust this value to control the space from the left */
+}
+
+.content p {
+ max-width: 300px; /* Limit the width of the text */
+}
+
+    </style>
+</head>
+<body>
+    <div class="nav-container">
+        <div class="nav-links">
+            <a href="{% url 'home' %}" class="nav-link">Home</a>
+            <a href="{% url 'login' %}" class="nav-link">Login</a>
+            <a href="{% url 'register' %}" class="nav-link">Register</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}" class="nav-link">Logout</a>
+            {% endif %}
+        </div>
+    </div>
+<div class="content">
+<p> WebSacco is what your SACCO needs to move to the next level.
+    Focus on Investments as we handle the Financial Administration.
+    Automate your SACCO now!</p>
+</div>
+ 
+    <div class="container">
+        <h1>Loan Management</h1>
+        <p>Empowering women through financial inclusion.</p>
+        <p>Choose an option to continue:</p>
+        <div class="button-group">
+            <a class="button" href="{% url 'member_contribution' %}">Deposit Money</a>
+            <a class="button" href="{% url 'borrow_loan' %}">Borrow Loan</a>
+            <a class="button" href="{% url 'fund_loan' %}">Fund Loan</a>
+            <a class="button" href="{% url 'repay_loan' %}">Repay Loan</a>
+        </div>
+    </div>
+    <footer class="text-center py-4">
+        &copy; 2023 Table Banking. All rights reserved.
+    </footer>
+</body>
+
+</html>
