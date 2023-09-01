@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Table Banking</title>
+    <!-- Add Bootstrap CSS link -->
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Add Font Awesome link for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .border-3d {
+            border: 2px solid rgba(0, 0, 0, 0.125);
+            /* Add 3D border */
+            border-radius: 10px;
+            /* Adjust border radius */
+            transform: translateZ(0);
+            /* Add 3D effect */
+        }
+
+        /* Add custom styles */
+        .custom-modal {
+            background-color: #f5f5f5;
+        }
+
+        .modal-content {
+            border: none;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body style="background-color: rgb(224, 236, 232);">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+            <img src="data:image/jpeg;base64,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"
+                alt="Logo" height="30">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <button type="button" class="btn btn-success">Login</button>
+                    </a>
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <button type="button" class="btn btn-success">SignUp</button>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Login Form -->
+    <div class="container-fluid mt-4 ">
+        <div class="row justify-content-center">
+
+            <div class="col-md-10">
+                <div class=" p-3 border-3d">
+                    <h4 class="font-weight-bold text-center">Automate your SACCO</h4>
+                    <p class="text-center">Empowering women through financial inclusion.</p>
+                    <p class="mt-3 text-center">Choose an option to continue:</p>
+                    <center>
+                        <div class="button-group p-4">
+                            <button type="button" class="btn btn-success" href="{% url 'member_contribution' %}">Create
+                                a Group</button>
+                            <button type="button" class="btn btn-success" href="{% url 'borrow_loan' %}">Join a
+                                Group</button>
+                        </div>
+                    <p>Select a Group You Belongs to</p>
+                    <div class="card col-md-4 bg-light mb-3">
+                        <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3 pr-0">
+                            <div class="d-flex flex-nowrap dash-widget">
+                                <div class="dash-widget-icon mt-3 text-success" style="border-radius: 50%;background-color: rgb(245, 233, 233);padding: 5px;">
+                                    <i class="fas fa-users fa-3x"></i> <!-- Adjust fa-3x for larger icon -->
+                                </div>
+                                <div class="dash-widget-info pl-3">
+                                    <h4 class="mb-0 text-success">Group</h4>
+                                    
+                                    <span class="badge badge-success">Group Active</span>
+                                    <p class="mb-1 text-success">Secretary</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card col-md-4 bg-light">
+                        <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3 pr-0">
+                            <div class="d-flex flex-nowrap dash-widget">
+                                <div class="dash-widget-icon mt-3 text-success" style="border-radius: 50%;background-color: rgb(245, 233, 233);padding: 5px;">
+                                    <i class="fas fa-users fa-3x"></i> <!-- Adjust fa-3x for larger icon -->
+                                </div>
+                                <div class="dash-widget-info pl-3">
+                                    <h4 class="mb-0 text-success">Group</h4>
+                                    
+                                    <span class="badge badge-success">Group Active</span>
+                                    <p class="mb-1 text-success">Secretary</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="button-group p-4">
+                        <button type="button" class="btn btn-danger" href="#">
+                            <i class="fas fa-sign-out-alt"></i>   Logout
+                        </button>
+                       
+                    </div>
+                    </center>
+                        
+                    </div>
+                </div>
+               
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Add Bootstrap JS scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
